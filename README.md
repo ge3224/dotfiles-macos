@@ -34,18 +34,20 @@
 
 #### OS
 
-1. Text Input: Go to System Settings > Keyboard > Input Sources
 
-- [ ] Switch off autospelling, capitalize, smart quotes, etc.
+System Preferences > Keyboard 
 
-2. Finder > View 
+- [ ] > Shortcuts: Mission Control > Switch to Desktop <Num>
+- [ ] > Input Sources: Switch off autospelling, capitalize, smart quotes, etc.
 
-- [ ] Show Path Bar
-- [ ] View > Show Status Bar
+Finder > View 
 
-3. Finder > Settings
+- [ ] > Show Path Bar
+- [ ] > Show Status Bar
 
-- [ ] New Finder windows show: <Projects>
+Finder > Settings
+
+- [ ] > New Finder windows show: <Projects>
 - [ ] > Sidebar: Customize sidebar view
 - [ ] > Advanced: Search current folder
 
@@ -54,3 +56,7 @@
 zsh:
 
 - [No oh-my-zsh config](https://www.youtube.com/watch?v=bTLYiNvRIVI)
+
+Amethyst
+
+- [Getting Started](https://www.youtube.com/watch?v=7Z9-Ry4yGNc) 
