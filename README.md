@@ -6,6 +6,7 @@
 
 - [ ] Homebrew [link](https://brew.sh/) - Package Manager
 - [ ] Kitty [link](https://sw.kovidgoyal.net/kitty/) - Terminal Multiplexer
+- [ ] Git [link](https://git-scm.com/download/mac) - version control
 - [ ] Neovim [link](https://neovim.io/) - Code Editor
 - [ ] Maccy [link](https://maccy.app/) - Clipboard Manager
 - [ ] Set Up a Window Manager, some options:
@@ -13,14 +14,24 @@
     - Yabai [link](https://github.com/koekeishiya/yabai) 
     - Amethyst [link](https://github.com/ianyh/Amethyst) - `xmonad` inspired
 
+#### Languages, Environments, Compilers
+
+- [ ] Docker
+- [ ] Go
+- [ ] PHP
+- [ ] Python
+- [ ] Rust
+- [ ] TypeScript
+- [ ] pnpm
+
 #### Browsers
 
 - [ ] Brave
-- [ ] Google Chrome
-- [ ] Google Chrome Canary
 - [ ] Firefox
 - [ ] Firefox Developer Edition
 - [ ] Firefox Nightly
+- [ ] Google Chrome
+- [ ] Google Chrome Canary
 - [ ] Microsoft Edge
 - [ ] Safari Technology Preview
 - [ ] Tor Browser
@@ -34,7 +45,6 @@
 
 #### OS
 
-
 System Preferences > Keyboard 
 
 - [ ] > Shortcuts: Mission Control > Switch to Desktop <Num>
@@ -47,14 +57,19 @@ Finder > View
 
 Finder > Settings
 
-- [ ] > New Finder windows show: <Projects>
+- [ ] > New Finder windows show: 'Projects'
 - [ ] > Sidebar: Customize sidebar view
 - [ ] > Advanced: Search current folder
+
+#### Terminal
+
+- [ ] Create `~/.zprofile` config file 
 
 ## References
 
 zsh:
 
+- [Z Shell Doc](https://zsh.sourceforge.io/Guide/zshguide.html)
 - [No oh-my-zsh config](https://www.youtube.com/watch?v=bTLYiNvRIVI)
 
 Amethyst
