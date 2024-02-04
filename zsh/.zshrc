@@ -147,6 +147,9 @@ prompt_purification_setup() {
     PROMPT=$'%F{white}%~ %B%F{blue}>%f%b '
 }
 
+bindkey -v
+export KEYTIMEOUT=1
+
 prompt_purification_setup
 if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
   . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
