@@ -45,6 +45,8 @@
 
 #### OS
 
+Finder > System Settings > Appearance > Dark
+
 System Preferences > Keyboard 
 
 - [ ] > Shortcuts: Mission Control > Switch to Desktop <Num>
