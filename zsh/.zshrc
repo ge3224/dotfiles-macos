@@ -72,7 +72,11 @@ export KEYTIMEOUT=1
 if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
   . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   # ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=cyan,underline
-  ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=magenta,underline
+  ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=196,underline
+  ZSH_HIGHLIGHT_STYLES[single-quoted-argument-unclosed]=fg=196,underline
+  ZSH_HIGHLIGHT_STYLES[double-quoted-argument-unclosed]=fg=196,underline
   # ZSH_HIGHLIGHT_STYLES[precommand]=fg=cyan,underline
-  ZSH_HIGHLIGHT_STYLES[arg0]=fg=cyan
+  ZSH_HIGHLIGHT_STYLES[arg0]=fg=120
+  ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=220
+  ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=220
 fi
