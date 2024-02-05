@@ -1,4 +1,10 @@
-eval $(keychain --eval --quiet id_ed25519 ~/.ssh/id_ed25519)
+#!/bin/zsh
+
+key_chain="keychain"
+
+if command -v $key_chain &> /dev/null; then
+  eval $(keychain --eval --quiet id_ed25519 ~/.ssh/id_ed25519)
+fi
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -69,8 +75,7 @@ setprompt
 bindkey -v
 export KEYTIMEOUT=1
 
-if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-  . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+highlighting_tweak() {
   # ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=cyan,underline
   ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=196,underline
   ZSH_HIGHLIGHT_STYLES[single-quoted-argument-unclosed]=fg=196,underline
@@ -79,4 +84,12 @@ if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.
   ZSH_HIGHLIGHT_STYLES[arg0]=fg=120
   ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=220
   ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=220
+}
+
+if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+  . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  highlighting_tweak
+elif [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+  . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  highlighting_tweak
 fi
