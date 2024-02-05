@@ -23,6 +23,7 @@
 - [ ] Rust
 - [ ] TypeScript
 - [ ] pnpm
+- [ ] sqlite
 
 #### Browsers
 
