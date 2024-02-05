@@ -9,9 +9,9 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # History stuff
-HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTFILE=~/.cache/zsh/history
+HISTSIZE=10000
+SAVEHIST=10000
 
 unsetopt beep
 
@@ -34,7 +34,10 @@ alias pip='pip3.9'
 alias vim='nvim'
 
 autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
 compinit
+_comp_options+=(globdots) # Include hidden files.
 
 setprompt() {
   setopt prompt_subst
@@ -53,7 +56,7 @@ setprompt() {
     %F{246}:%f
     %F{180}%~%f
     %F{246}%f
-    %(!.%F{167}%#%f.%F{043}>%f)
+    %(!.%F{167}%#%f.%F{166}>%f)
     " "
   '}}
 
@@ -68,8 +71,8 @@ export KEYTIMEOUT=1
 
 if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
   . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  # ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=cyan,underline
+  ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=magenta,underline
+  # ZSH_HIGHLIGHT_STYLES[precommand]=fg=cyan,underline
+  ZSH_HIGHLIGHT_STYLES[arg0]=fg=cyan
 fi
-
-# if [[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
-#   . /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-# fi
