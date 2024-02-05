@@ -51,6 +51,7 @@ System Preferences > Keyboard
 
 - [ ] > Shortcuts: Mission Control > Switch to Desktop <Num>
 - [ ] > Input Sources: Switch off autospelling, capitalize, smart quotes, etc.
+- [ ] > Modify Keys (Caps Lock to Esc)
 
 Finder > View 
 
