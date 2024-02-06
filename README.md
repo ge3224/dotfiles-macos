@@ -8,64 +8,92 @@ This repository contains checklists and configuration files for setting up a web
 
 - [ ] Show Hidden Files in Finder
 
+    ```
     Finder > Command + Shift + .
+    ```
 
 - [ ] Show Path Bar in Finder
 
+    ```
     Finder > View > Show Path Bar
+    ```
 
 - [ ] Show File/Directory Status in Finder
 
+    ```
     Finder > Show Status Bar
+    ```
 
 - [ ] Show All File and Directory Sizes
 
+    ```
     Finder > View > Show View Options > (Check) Calculate all sizes
+    ```
 
 - [ ] Show File Name Extensions
 
+    ```
     Finder > Preferences > Advanced > (Check) Show all filename extensions
+    ```
 
 - [ ] Show Reference to User in Finder Sidebar
 
+    ```
     Finder > Preferences > <user> on the sidebar
+    ```
 
 - [ ] Auto Hide Docks
 
+    ```
     System Preferences > Dock & Menu Bar > (Check) Automatically hide and show the Dock
+    ```
 
 - [ ] Disable Auto Correct Settings
 
+    ```
     System Preferences > Keyboard > Text > 
         (Uncheck) "Correct spelling automatically"
         (Uncheck) "Capitalize words automatically"
         (Uncheck) "Add period with double-space"
         (Uncheck) "Use smart quotes and dashes"
+    ```
 
 - [ ] Switch to Dark Theme
 
+    ```
     Finder > System Settings > Appearance > Dark
+    ```
 
 - [ ] Remap Caps Lock Key to Escape
 
+    ```
     System Preferences > Keyboard > Modifier Keys > Caps Lock Key
         (Choose) Escape
+    ```
 
 - [ ] Show Most Frequently Folder in New Finder Windows
 
+    ```
     Finder > Settings > New Finder windows show > (Choose) "your custom folder"
+    ```
 
 - [ ] Hide Sidebar's Infrequently Used Items 
 
+    ```
     Finder > Settings > Sidebar
+    ```
 
 - [ ] Limit Search to Current Folder
 
+    ```
     Finder > Settings > Advanced > When performing a search > (Select) Search the Current Folder
+    ```
 
 - [ ] Set Numbered Shortcuts for Switching Workspaces
 
+    ```
     System Preferences > Keyboard > Shortcuts > Mission Control > (Check) Switch to Desktop <Num>
+    ```
 
 ### Install software
 
