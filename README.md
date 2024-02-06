@@ -103,7 +103,7 @@ This repository contains checklists and configuration files for setting up a web
 - [ ] [Neovim](https://neovim.io/) - code editor 
     - [ ] [My Config](https://github.com/ge3224/nvim_cfg)
 - [ ] [Maccy](https://maccy.app/) - clipboard manager
-- [ ] [Amethyst]((https://github.com/ianyh/Amethyst) - tiling window manager
+- [ ] [Amethyst](https://github.com/ianyh/Amethyst) - tiling window manager
 - [ ] [Ansible](https://www.ansible.com/) - automation
     - [ ] Start Personal Mac Dev Playbook
 
