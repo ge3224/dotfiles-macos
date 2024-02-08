@@ -54,6 +54,12 @@ This repository contains checklists and configuration files for setting up a web
     System Preferences > Dock & Menu Bar > (Check) Automatically hide and show the Dock
     ```
 
+- [X] Turn Off Natural Scrolling (Mouse Wheel)
+
+    ```
+    System Preferences > Mouse > (Uncheck) Scroll direction: Natural
+    ```
+
 - [X] Disable Auto Correct Settings
 
     ```
