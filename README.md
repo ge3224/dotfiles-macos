@@ -109,8 +109,6 @@ This repository contains checklists and configuration files for setting up a web
     System Preferences > Keyboard > Shortcuts > Mission Control > (Check) Switch to Desktop <Num>
     ```
 
-
-
 ### Install software
 
 - [X] [Homebrew](https://brew.sh/) - package manager
@@ -134,6 +132,7 @@ This repository contains checklists and configuration files for setting up a web
 
 - [X] Set up SSH Key
 - [X] Add SSH to github account
+- [ ] Configure SSH Agent to start with system
 
 #### Programming Language Compilers, Tooling, Etc.
 
@@ -145,6 +144,7 @@ This repository contains checklists and configuration files for setting up a web
 - [X] [pipx](https://github.com/pypa/pipx) - Virtual Environment for Python
 - [X] [poetry](https://python-poetry.org/docs/) - python package manager
 - [ ] [Composer](https://getcomposer.org/download/) - PHP package manager
+    - [ ] Install in local project (virtually)
 - [X] [Dart](https://dart.dev/get-dart) - programming language
 
 #### Browsers
