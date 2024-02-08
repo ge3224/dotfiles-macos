@@ -146,7 +146,9 @@ This repository contains checklists and configuration files for setting up a web
 
 ## References
 
-zsh:
+- [Apple Device Support Tutorials](https://it-training.apple.com/tutorials/apt-support)
+
+## zsh:
 
 - [Z Shell Doc](https://zsh.sourceforge.io/Guide/zshguide.html)
 - [No oh-my-zsh config](https://www.youtube.com/watch?v=bTLYiNvRIVI)
