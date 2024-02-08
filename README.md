@@ -124,7 +124,19 @@ This repository contains checklists and configuration files for setting up a web
 #### Shell
 
 - [ ] Create `~/.zprofile` config file 
-- [ ] Check `zsh` version, upgrade if necessary
+- [X] Check `zsh` version, upgrade if necessary
+
+
+    ```sh 
+    brew install zsh                            # Install latest `zsh` via HomeBrew
+    which zsh                                   # Show path to brew version of `zsh`
+    dscl . -read /Users/<username> UserShell    # Check default shell
+    sudo vim /etc/shells                        # Add path to brew version of `zsh` at the bottom of file
+    chsh -s /usr/local/bin/zsh                  # Change default shell to new version 
+    dscl . -read /Users/<username> UserShell    # Confirm the change
+    brew upgrade zsh                            # Upgrade via brew
+    ```
+
 - [X] Symlink [`zsh` config](zsh/.zshrc) at `~/.zshrc`
 - [ ] Create Keyboard Shortcut for Kitty
 
