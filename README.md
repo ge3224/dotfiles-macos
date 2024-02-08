@@ -61,7 +61,7 @@ This repository contains checklists and configuration files for setting up a web
 - [ ] Switch to Dark Theme
 
     ```
-    Finder > System Settings > Appearance > Dark
+    System Preferences > Appearance > Dark
     ```
 
 - [ ] Remap Caps Lock Key to Escape
@@ -74,19 +74,19 @@ This repository contains checklists and configuration files for setting up a web
 - [ ] Show Most Frequently Folder in New Finder Windows
 
     ```
-    Finder > Settings > New Finder windows show > (Choose) "your custom folder"
+    Finder > Preferences > New Finder windows show > (Choose) "your custom folder"
     ```
 
 - [ ] Hide Sidebar's Infrequently Used Items 
 
     ```
-    Finder > Settings > Sidebar
+    Finder > Preferences > Sidebar
     ```
 
 - [ ] Limit Search to Current Folder
 
     ```
-    Finder > Settings > Advanced > When performing a search > (Select) Search the Current Folder
+    Finder > Preferences > Advanced > When performing a search > (Select) Search the Current Folder
     ```
 
 - [ ] Set Numbered Shortcuts for Switching Workspaces
