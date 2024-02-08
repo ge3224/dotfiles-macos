@@ -6,49 +6,50 @@ This repository contains checklists and configuration files for setting up a web
 
 ### System Preferences
 
-- [ ] Show Hidden Files in Finder
+- [X] Show Hidden Files in Finder
 
     ```
     Finder > Command + Shift + .
     ```
 
-- [ ] Show Path Bar in Finder
+- [X] Show Path Bar in Finder
 
     ```
     Finder > View > Show Path Bar
     ```
 
-- [ ] Show File/Directory Status in Finder
+- [X] Show File/Directory Status in Finder
 
     ```
     Finder > Show Status Bar
     ```
 
-- [ ] Show All File and Directory Sizes
+- [ ] Show All File and Directory Sizes 
+    - [ ] Confirm available on Monterey
 
     ```
     Finder > View > Show View Options > (Check) Calculate all sizes
     ```
 
-- [ ] Show File Name Extensions
+- [X] Show File Name Extensions
 
     ```
     Finder > Preferences > Advanced > (Check) Show all filename extensions
     ```
 
-- [ ] Show Reference to User in Finder Sidebar
+- [X] Show Reference to User in Finder Sidebar
 
     ```
     Finder > Preferences > <user> on the sidebar
     ```
 
-- [ ] Auto Hide Docks
+- [X] Auto Hide Docks
 
     ```
     System Preferences > Dock & Menu Bar > (Check) Automatically hide and show the Dock
     ```
 
-- [ ] Disable Auto Correct Settings
+- [X] Disable Auto Correct Settings
 
     ```
     System Preferences > Keyboard > Text > 
@@ -58,38 +59,39 @@ This repository contains checklists and configuration files for setting up a web
         (Uncheck) "Use smart quotes and dashes"
     ```
 
-- [ ] Switch to Dark Theme
+- [X] Switch to Dark Theme
 
     ```
     System Preferences > Appearance > Dark
     ```
 
-- [ ] Remap Caps Lock Key to Escape
+- [X] Remap Caps Lock Key to Escape
 
     ```
     System Preferences > Keyboard > Modifier Keys > Caps Lock Key
         (Choose) Escape
     ```
 
-- [ ] Show Most Frequently Folder in New Finder Windows
+- [X] Show Most Frequently Folder in New Finder Windows
 
     ```
     Finder > Preferences > New Finder windows show > (Choose) "your custom folder"
     ```
 
-- [ ] Hide Sidebar's Infrequently Used Items 
+- [X] Hide Sidebar's Infrequently Used Items 
 
     ```
     Finder > Preferences > Sidebar
     ```
 
-- [ ] Limit Search to Current Folder
+- [X] Limit Search to Current Folder
 
     ```
     Finder > Preferences > Advanced > When performing a search > (Select) Search the Current Folder
     ```
 
 - [ ] Set Numbered Shortcuts for Switching Workspaces
+    - [ ] Confirm setting in Monterey
 
     ```
     System Preferences > Keyboard > Shortcuts > Mission Control > (Check) Switch to Desktop <Num>
