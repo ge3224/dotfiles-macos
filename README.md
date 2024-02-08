@@ -107,32 +107,36 @@ This repository contains checklists and configuration files for setting up a web
 
 ### Install software
 
-- [ ] [Homebrew](https://brew.sh/) - package manager
-- [ ] [Git](https://git-scm.com/download/mac) - version control
-- [ ] [Kitty](https://sw.kovidgoyal.net/kitty/) - terminal multiplexer
-- [ ] [Neovim](https://neovim.io/) - code editor 
-    - [ ] [My Config](https://github.com/ge3224/nvim_cfg)
-- [ ] [Maccy](https://maccy.app/) - clipboard manager
-- [ ] [Amethyst](https://github.com/ianyh/Amethyst) - tiling window manager
-- [ ] [Ansible](https://www.ansible.com/) - automation
+- [X] [Homebrew](https://brew.sh/) - package manager
+- [X] [Git](https://git-scm.com/download/mac) - version control
+- [X] [Kitty](https://sw.kovidgoyal.net/kitty/) - terminal multiplexer
+- [X] [Neovim](https://neovim.io/) - code editor 
+    - [X] [My Config](https://github.com/ge3224/nvim_cfg)
+- [X] [Maccy](https://maccy.app/) - clipboard manager
+- [X] [Amethyst](https://github.com/ianyh/Amethyst) - tiling window manager
+- [X] [Ansible](https://www.ansible.com/) - automation
     - [ ] Start Personal Mac Dev Playbook
 
 #### Shell
 
 - [ ] Create `~/.zprofile` config file 
 - [ ] Check `zsh` version, upgrade if necessary
-- [ ] Symlink [`zsh` config](zsh/.zshrc) at `~/.zshrc`
+- [X] Symlink [`zsh` config](zsh/.zshrc) at `~/.zshrc`
 - [ ] Create Keyboard Shortcut for Kitty
+
+#### SSH Keys
+
+- [ ] Set up SSH Key
+- [ ] Add SSH to github account
 
 #### Programming Language Compilers, Tooling, Etc.
 
-- [ ] [Docker](https://docs.docker.com/get-docker/) - containerized apps
-- [ ] [Go](https://go.dev/dl/) - programming language
-- [ ] [Rust](https://www.rust-lang.org/learn/get-started) - programming language
-- [ ] [pnpm](https://pnpm.io/installation) - JavaScript package manager
+- [X] [Docker](https://docs.docker.com/get-docker/) - containerized apps
+- [X] [Go](https://go.dev/dl/) - programming language
+- [X] [Rust](https://www.rust-lang.org/learn/get-started) - programming language
+- [X] [pnpm](https://pnpm.io/installation) - JavaScript package manager
 - [ ] [poetry](https://python-poetry.org/docs/) - python package manager
 - [ ] [Composer](https://getcomposer.org/download/) - PHP package manager
-- [ ] [SQLite](https://www.sqlite.org/download.html) - serverless SQL database engine
 - [ ] [Dart](https://dart.dev/get-dart) - programming language
 
 #### Browsers
