@@ -6,8 +6,8 @@ This repository contains checklists and configuration files for setting up a web
 
 ### User Accounts
 
-- [ ] Create a user/admin account
-- [ ] Perform System Updates
+- [X] Create a user/admin account
+- [X] Perform System Updates
 
 ### System Preferences
 
@@ -101,9 +101,7 @@ This repository contains checklists and configuration files for setting up a web
     Finder > Preferences > Advanced > When performing a search > (Select) Search the Current Folder
     ```
 
-- [ ] Set Numbered Shortcuts for Switching Workspaces
-    - [X] Confirm setting in Monterey (Not Available)
-    - [ ] Research [AppleScript Solution](https://chat.openai.com/share/145277c4-ec45-4f1d-bfa8-efa908bdc76b)
+- [X] Set Numbered Shortcuts for Switching Workspaces
 
     ```
     System Preferences > Keyboard > Shortcuts > Mission Control > (Check) Switch to Desktop <Num>
