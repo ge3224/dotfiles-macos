@@ -126,8 +126,8 @@ This repository contains checklists and configuration files for setting up a web
 
 #### SSH Keys
 
-- [ ] Set up SSH Key
-- [ ] Add SSH to github account
+- [X] Set up SSH Key
+- [X] Add SSH to github account
 
 #### Programming Language Compilers, Tooling, Etc.
 
