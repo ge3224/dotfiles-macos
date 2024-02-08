@@ -114,7 +114,7 @@ This repository contains checklists and configuration files for setting up a web
 - [X] [Kitty](https://sw.kovidgoyal.net/kitty/) - terminal multiplexer
 - [X] [Neovim](https://neovim.io/) - code editor 
     - [X] [My Config](https://github.com/ge3224/nvim_cfg)
-- [X] [Maccy](https://maccy.app/) - clipboard manager
+- [ ] [Maccy](https://maccy.app/) - clipboard manager
 - [X] [Amethyst](https://github.com/ianyh/Amethyst) - tiling window manager
 - [X] [Ansible](https://www.ansible.com/) - automation
     - [ ] Start Personal Mac Dev Playbook
