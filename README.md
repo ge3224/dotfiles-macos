@@ -4,6 +4,11 @@ This repository contains checklists and configuration files for setting up a web
 
 ## Checklists
 
+### User Accounts
+
+- [ ] Create a user/admin account
+- [ ] Perform System Updates
+
 ### System Preferences
 
 - [X] Show Hidden Files in Finder
@@ -91,11 +96,14 @@ This repository contains checklists and configuration files for setting up a web
     ```
 
 - [ ] Set Numbered Shortcuts for Switching Workspaces
-    - [ ] Confirm setting in Monterey
+    - [X] Confirm setting in Monterey (Not Available)
+    - [ ] Research [AppleScript Solution](https://chat.openai.com/share/145277c4-ec45-4f1d-bfa8-efa908bdc76b)
 
     ```
     System Preferences > Keyboard > Shortcuts > Mission Control > (Check) Switch to Desktop <Num>
     ```
+
+
 
 ### Install software
 
@@ -149,6 +157,7 @@ This repository contains checklists and configuration files for setting up a web
 ## References
 
 - [Apple Device Support Tutorials](https://it-training.apple.com/tutorials/apt-support)
+- [Latest MacOS Patch: Monterey 12.7.3](https://support.apple.com/en-us/HT214057) 
 
 ## zsh:
 
