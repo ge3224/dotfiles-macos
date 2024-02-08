@@ -131,25 +131,28 @@ This repository contains checklists and configuration files for setting up a web
 
 #### Programming Language Compilers, Tooling, Etc.
 
+- [X] [Node.js](https://nodejs.org/en) - JavaScript Development
 - [X] [Docker](https://docs.docker.com/get-docker/) - containerized apps
 - [X] [Go](https://go.dev/dl/) - programming language
 - [X] [Rust](https://www.rust-lang.org/learn/get-started) - programming language
 - [X] [pnpm](https://pnpm.io/installation) - JavaScript package manager
-- [ ] [poetry](https://python-poetry.org/docs/) - python package manager
+- [X] [pipx](https://github.com/pypa/pipx) - Virtual Environment for Python
+- [X] [poetry](https://python-poetry.org/docs/) - python package manager
 - [ ] [Composer](https://getcomposer.org/download/) - PHP package manager
-- [ ] [Dart](https://dart.dev/get-dart) - programming language
+- [X] [Dart](https://dart.dev/get-dart) - programming language
 
 #### Browsers
 
-- [ ] [Brave](https://brave.com/)
-- [ ] [Firefox](https://www.mozilla.org/en-US/firefox/new/)
-- [ ] [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
-- [ ] [Firefox Nightly](https://www.mozilla.org/en-US/firefox/124.0a1/releasenotes/)
-- [ ] [Google Chrome](https://www.google.com/chrome/index.html)
-- [ ] [Google Chrome Canary](https://www.google.com/chrome/canary/)
-- [ ] [Microsoft Edge](https://www.microsoft.com/en-us/edge?ep=313&form=MA13M0&es=40&ch=1)
-- [ ] [Safari Technology Preview](https://developer.apple.com/safari/technology-preview/)
-- [ ] [Tor Browser](https://www.torproject.org/download/)
+- [X] [Brave](https://brave.com/)
+- [X] [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+- [X] [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
+- [x] [Firefox Nightly](https://www.mozilla.org/en-US/firefox/124.0a1/releasenotes/)
+- [X] [Google Chrome](https://www.google.com/chrome/index.html)
+- [X] [Google Chrome Canary](https://www.google.com/chrome/canary/)
+- [X] [Microsoft Edge](https://www.microsoft.com/en-us/edge?ep=313&form=MA13M0&es=40&ch=1)
+- [ ] [Safari Technology Preview](https://developer.apple.com/safari/technology-preview/) 
+    - [ ] Requires macOS 13 or later
+- [X] [Tor Browser](https://www.torproject.org/download/)
 
 #### Mobile development
 
