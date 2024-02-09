@@ -113,7 +113,7 @@ This repository contains checklists and configuration files for setting up a web
 - [X] [Git](https://git-scm.com/download/mac) - version control
 - [X] [Kitty](https://sw.kovidgoyal.net/kitty/) - terminal multiplexer
 - [X] [Neovim](https://neovim.io/) - code editor 
-    - [X] [My Config](https://github.com/ge3224/nvim_cfg)
+    - [X] Symlink to [my neovim config](https://github.com/ge3224/nvim_cfg)
 - [ ] [Maccy](https://maccy.app/) - clipboard manager
 - [X] [Amethyst](https://github.com/ianyh/Amethyst) - tiling window manager
 - [X] [Ansible](https://www.ansible.com/) - automation
@@ -135,7 +135,8 @@ This repository contains checklists and configuration files for setting up a web
     brew upgrade zsh                            # Upgrade via brew
     ```
 
-- [X] Symlink [`zsh` config](zsh/.zshrc) at `~/.zshrc`
+
+- [X] Symlink to [my `zsh` config for macOS](`./roles/common/files/home/zsh/.zshrc`)
 - [ ] Create Keyboard Shortcut for Kitty
 
 #### SSH Keys
