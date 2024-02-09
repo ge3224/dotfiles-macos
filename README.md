@@ -135,8 +135,7 @@ This repository contains checklists and configuration files for setting up a web
     brew upgrade zsh                            # Upgrade via brew
     ```
 
-
-- [X] Symlink to [my `zsh` config for macOS](`./roles/common/files/home/zsh/.zshrc`)
+- [X] Symlink to [my `zsh` config](roles/common/files/home/zsh/.zshrc)
 - [ ] Create Keyboard Shortcut for Kitty
 
 #### SSH Keys
