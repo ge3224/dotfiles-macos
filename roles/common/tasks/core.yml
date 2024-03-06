@@ -11,3 +11,12 @@
    community.general.homebrew:
     update_homebrew: true
     upgrade_all: true
+
+ - name: Check if Xcode Command Line Tools are installed
+   stat:
+     path: /Library/Developer/CommandLineTools
+   register: xcode_clt_check
+
+ - name: Install Xcode Command Line Tools
+   shell: xcode-select --install
+   when: not xcode_clt_check.stat.exists
