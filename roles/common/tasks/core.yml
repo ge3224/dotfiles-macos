@@ -1,0 +1,13 @@
+ - name: Install Homebrew if not present
+   community.general.homebrew:
+     state: present
+
+ - name: Update Homebrew to the latest version
+   community.general.homebrew:
+     state: latest
+     update_homebrew: true
+
+ - name: Update all packages
+   community.general.homebrew:
+    update_homebrew: true
+    upgrade_all: true

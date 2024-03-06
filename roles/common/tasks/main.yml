@@ -1,1 +1,4 @@
-# TODO
+ - name: Ping my hosts
+   ansible.builtin.ping:
+
+ - include_tasks: core.yml
