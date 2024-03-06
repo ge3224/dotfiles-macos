@@ -26,7 +26,18 @@
    when: not xcode_clt_check.stat.exists
 
 # Kitty Terminal Multiplexer
- 
+
+ - name: Check if kitty is installed via Homebrew
+   stat:
+     path: /Applications/kitty.app
+   register: kitty_check
+
+ - name: Install Kitty
+   shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+   args:
+     creates: /Applications/kitty.app
+   when: not kitty_check.stat.exists
+
  - name: Get stats of ~/.config/kitty
    ansible.builtin.stat:
      path: /Users/{{ username }}/.config/kitty
