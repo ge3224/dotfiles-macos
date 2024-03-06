@@ -50,3 +50,27 @@
      dest: /Users/{{ username }}/.config/kitty
      state: link
 
+# Z Shell 
+
+ - name: Get stats of ~/.zshrc
+   ansible.builtin.stat:
+     path: /Users/{{ username }}/.zshrc
+   register: p
+
+ - name: Remove any z-shell config that is not a symlink
+   ansible.builtin.file:
+     path: /Users/{{ username }}/.zshrc
+     state: absent
+   when: p.stat.isdir is defined and p.stat.isdir
+
+ - name: Unlink z-shell config if it's a symlink
+   file:
+     path: /Users/{{ username }}/.zshrc
+     state: absent
+   when: p.stat.exists and p.stat.islnk
+
+ - name: Creating a symlink from repo `zshrc` to `~/.zshrc`
+   ansible.builtin.file:
+     src: /Users/{{ username }}/Projects/dotfiles-macos/main/roles/common/files/home/zsh/.zshrc
+     dest: /Users/{{ username }}/.zshrc
+     state: link
