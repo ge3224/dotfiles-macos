@@ -1,3 +1,5 @@
+# Homebrew Package Management
+
  - name: Install Homebrew if not present
    community.general.homebrew:
      state: present
@@ -12,6 +14,8 @@
     update_homebrew: true
     upgrade_all: true
 
+# Command Line Tools
+
  - name: Check if Xcode Command Line Tools are installed
    stat:
      path: /Library/Developer/CommandLineTools
@@ -20,3 +24,29 @@
  - name: Install Xcode Command Line Tools
    shell: xcode-select --install
    when: not xcode_clt_check.stat.exists
+
+# Kitty Terminal Multiplexer
+ 
+ - name: Get stats of ~/.config/kitty
+   ansible.builtin.stat:
+     path: /Users/{{ username }}/.config/kitty
+   register: p
+
+ - name: Remove any kitty config that is not a symlink
+   ansible.builtin.file:
+     path: /Users/{{ username }}/.config/kitty
+     state: absent
+   when: p.stat.isdir is defined and p.stat.isdir
+
+ - name: Unlink kitty config if it's a symlink
+   file:
+     path: /Users/{{ username }}/.config/kitty
+     state: absent
+   when: p.stat.exists and p.stat.islnk
+
+ - name: Creating a symlink from repo `kitty` to `~/.config`
+   ansible.builtin.file:
+     src: /Users/{{ username }}/Projects/dotfiles-macos/main/roles/common/files/home/kitty
+     dest: /Users/{{ username }}/.config/kitty
+     state: link
+
