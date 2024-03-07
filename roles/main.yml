@@ -7,3 +7,7 @@
 
   roles:
     - common
+
+  handlers:
+    - name: Restart Finder
+      command: killall Finder
