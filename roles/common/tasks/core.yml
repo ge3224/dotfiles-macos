@@ -1,11 +1,6 @@
 ---
 
-  # - name: Print message
-  #   ansible.builtin.debug:
-  #     msg: Hello world
-
   # Homebrew Package Management
-
   - name: Install Homebrew if not present
     community.general.homebrew:
       state: present
@@ -21,7 +16,6 @@
       upgrade_all: true
 
   # Z Shell 
-
   - name: Check if zsh is installed via Homebrew
     shell: brew list --formula | grep -q '^zsh$'
     register: homebrew_zsh
@@ -81,7 +75,6 @@
       state: link
 
   # Command Line Tools
-
   - name: Check if Xcode Command Line Tools are installed
     stat:
       path: /Library/Developer/CommandLineTools
@@ -92,7 +85,6 @@
     when: not xcode_clt_check.stat.exists
 
   # Kitty Terminal Multiplexer
-
   - name: Check if kitty is installed via Homebrew
     stat:
       path: /Applications/kitty.app
@@ -126,3 +118,16 @@
       src: /Users/{{ username }}/Projects/dotfiles-macos/main/roles/common/files/home/kitty
       dest: /Users/{{ username }}/.config/kitty
       state: link
+
+  # ripgrep - https://docs.rs/crate/ripgrep/0.2.7
+  - name: Check if ripgrep is installed via Homebrew
+    command: brew list --formula | grep -q '^ripgrep$'
+    register: ripgrep_installed
+    changed_when: false
+    failed_when: false
+
+  - name: Install ripgrep via Homebrew
+    when: ripgrep_installed.rc != 0
+    homebrew:
+      name: ripgrep
+      state: present
