@@ -1,0 +1,84 @@
+---
+
+  # macOS settings
+  - name: Showing hidden files in Finder
+    command: defaults write com.apple.finder AppleShowAllFiles -bool true
+    # notify:
+    #   - Restart Finder
+
+  - name: Show Finder path bar
+    command: defaults write com.apple.finder ShowPathbar -bool true
+    # notify:
+    #   - Restart Finder
+
+  - name: Show Finder status bar
+    command: defaults write com.apple.finder ShowStatusBar -bool true
+    # notify:
+    #   - Restart Finder
+
+  - name: Enable showing file name extensions in Finder
+    command: defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+    # notify:
+    #   - Restart Finder
+
+  - name: Enable showing user's home directory in Finder sidebar
+    command: defaults write com.apple.finder ShowSidebar -bool true
+    # notify:
+    #   - Restart Finder
+    
+  - name: Enable Automatically hide and show the Dock
+    command: defaults write com.apple.dock autohide -bool true
+    notify:
+      - Restart Dock
+
+  - name: Uncheck Scroll direction - Natural
+    command: defaults write -g com.apple.swipescrolldirection -bool false
+
+  - name: Uncheck "Correct spelling automatically"
+    command: defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
+
+  - name: Uncheck "Capitalize words automatically"
+    command: defaults write -g NSAutomaticCapitalizationEnabled -bool false
+
+  - name: Uncheck "Add period with double-space"
+    command: defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
+
+  - name: Uncheck "Use smart quotes and dashes"
+    command: defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
+
+  - name: Set System Appearance to Dark Mode
+    command: defaults write -g AppleInterfaceStyle Dark
+
+  - name: Set Caps Lock Key as Escape
+    command: defaults write -g com.apple.keyboard.modifiermapping.1452-596-0 -array '<dict><key>HIDKeyboardModifierMappingDst</key><integer>53</integer><key>HIDKeyboardModifierMappingSrc</key><integer>0</integer></dict>'
+
+  # Do this manually and clone dotfile-macos repo inside 
+  #
+  # - name: Check if Projects folder exists
+  #   stat:
+  #     path: "/Users/{{ username }}/{{ workspace_dir }}"
+  #   register: projects_folder
+  #
+  # - name: Create Projects folder if not present
+  #   file:
+  #     path: "/Users/{{ username }}/{{ workspace_dir }}"
+  #     state: directory
+  #     owner: "{{ username }}"
+  #     group: staff
+  #     mode: '0755'
+  #   when: not projects_folder.stat.exists
+
+  - name: Set NewWindowTarget preference
+    command: defaults write com.apple.finder NewWindowTarget -string "PfLo"
+    # notify:
+    #     - Restart Finder
+
+  - name: Set NewWindowTargetPath preference
+    command: defaults write com.apple.finder NewWindowTargetPath -string "file:///Users/{{ username }}/{{ workspace_dir }}/"
+    # notify:
+    #   - Restart Finder
+
+  - name: Set Finder Search Preference
+    command: defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+    notify:
+      - Restart Finder

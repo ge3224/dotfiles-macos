@@ -131,19 +131,3 @@
     homebrew:
       name: ripgrep
       state: present
-
-  # macOS settings
-  - name: showing hidden files in Finder
-    command: defaults write com.apple.finder AppleShowAllFiles -bool true
-    # notify:
-    #   - Restart Finder
-
-  - name: show Finder path bar
-    command: defaults write com.apple.finder ShowPathbar -bool true
-    # notify:
-    #   - Restart Finder
-
-  - name: show Finder status bar
-    command: defaults write com.apple.finder ShowStatusBar -bool true
-    notify:
-      - Restart Finder
