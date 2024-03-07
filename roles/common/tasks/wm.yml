@@ -1,0 +1,6 @@
+---
+
+  - name: Install Amethyst
+    homebrew_cask:
+      name: amethyst
+      state: present
