@@ -1,0 +1,11 @@
+---
+
+  - name: Install Node.js
+    homebrew:
+      name: node
+      state: latest
+
+  - name: Install pnpm
+    homebrew:
+      name: pnpm
+      state: latest
