@@ -1,87 +1,128 @@
-# Homebrew Package Management
+---
 
- - name: Install Homebrew if not present
-   community.general.homebrew:
-     state: present
+  # - name: Print message
+  #   ansible.builtin.debug:
+  #     msg: Hello world
 
- - name: Update Homebrew to the latest version
-   community.general.homebrew:
-     state: latest
-     update_homebrew: true
+  # Homebrew Package Management
 
- - name: Update all packages
-   community.general.homebrew:
-    update_homebrew: true
-    upgrade_all: true
+  - name: Install Homebrew if not present
+    community.general.homebrew:
+      state: present
 
-# Command Line Tools
+  - name: Update Homebrew to the latest version
+    community.general.homebrew:
+      state: latest
+      update_homebrew: true
 
- - name: Check if Xcode Command Line Tools are installed
-   stat:
-     path: /Library/Developer/CommandLineTools
-   register: xcode_clt_check
+  - name: Update all packages
+    community.general.homebrew:
+      update_homebrew: true
+      upgrade_all: true
 
- - name: Install Xcode Command Line Tools
-   shell: xcode-select --install
-   when: not xcode_clt_check.stat.exists
+  # Z Shell 
 
-# Kitty Terminal Multiplexer
+  - name: Check if zsh is installed via Homebrew
+    shell: brew list --formula | grep -q '^zsh$'
+    register: homebrew_zsh
+    changed_when: false
+    failed_when: false
 
- - name: Check if kitty is installed via Homebrew
-   stat:
-     path: /Applications/kitty.app
-   register: kitty_check
+  - name: Install zsh via homebrew if not present
+    community.general.homebrew:
+      name: zsh
+      state: present
+    when: not homebrew_zsh.stdout
 
- - name: Install Kitty
-   shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-   args:
-     creates: /Applications/kitty.app
-   when: not kitty_check.stat.exists
+  - name: Check if /usr/local/bin/zsh exists in /etc/shells
+    shell: grep -q {{ brew_zsh_path }} /etc/shells
+    register: zsh_check
+    changed_when: false
+    failed_when: false
 
- - name: Get stats of ~/.config/kitty
-   ansible.builtin.stat:
-     path: /Users/{{ username }}/.config/kitty
-   register: p
+  - name: Append /usr/local/bin/zsh to /etc/shells
+    lineinfile:
+      path: /etc/shells
+      line: "{{ brew_zsh_path }}"
+      create: yes
+    when: not zsh_check.rc == 0
+    become: true
 
- - name: Remove any kitty config that is not a symlink
-   ansible.builtin.file:
-     path: /Users/{{ username }}/.config/kitty
-     state: absent
-   when: p.stat.isdir is defined and p.stat.isdir
+  - name: Check default shell
+    shell: dscl . -read /Users/{{ username }} UserShell
+    register: default_shell
+    ignore_errors: true
 
- - name: Unlink kitty config if it's a symlink
-   file:
-     path: /Users/{{ username }}/.config/kitty
-     state: absent
-   when: p.stat.exists and p.stat.islnk
+  - name: Change default shell to new version
+    shell: chsh -s {{ brew_zsh_path }} # Requires user password
+    when: "'{{ brew_zsh_path }}' not in default_shell.stdout"
 
- - name: Creating a symlink from repo `kitty` to `~/.config`
-   ansible.builtin.file:
-     src: /Users/{{ username }}/Projects/dotfiles-macos/main/roles/common/files/home/kitty
-     dest: /Users/{{ username }}/.config/kitty
-     state: link
+  - name: Get stats of ~/.zshrc
+    ansible.builtin.stat:
+      path: /Users/{{ username }}/.zshrc
+    register: kitty_cfg
 
-# Z Shell 
+  - name: Remove any z-shell config that is not a symlink
+    ansible.builtin.file:
+      path: /Users/{{ username }}/.zshrc
+      state: absent
+    when: kitty_cfg.stat.isdir is defined and kitty_cfg.stat.isdir
 
- - name: Get stats of ~/.zshrc
-   ansible.builtin.stat:
-     path: /Users/{{ username }}/.zshrc
-   register: p
+  - name: Unlink z-shell config if it's a symlink
+    file:
+      path: /Users/{{ username }}/.zshrc
+      state: absent
+    when: kitty_cfg.stat.exists and kitty_cfg.stat.islnk
 
- - name: Remove any z-shell config that is not a symlink
-   ansible.builtin.file:
-     path: /Users/{{ username }}/.zshrc
-     state: absent
-   when: p.stat.isdir is defined and p.stat.isdir
+  - name: Creating a symlink from repo `zshrc` to `~/.zshrc`
+    ansible.builtin.file:
+      src: /Users/{{ username }}/Projects/dotfiles-macos/main/roles/common/files/home/zsh/.zshrc
+      dest: /Users/{{ username }}/.zshrc
+      state: link
 
- - name: Unlink z-shell config if it's a symlink
-   file:
-     path: /Users/{{ username }}/.zshrc
-     state: absent
-   when: p.stat.exists and p.stat.islnk
+  # Command Line Tools
 
- - name: Creating a symlink from repo `zshrc` to `~/.zshrc`
-   ansible.builtin.file:
-     src: /Users/{{ username }}/Projects/dotfiles-macos/main/roles/common/files/home/zsh/.zshrc
-     dest: /Users/{{ username }}/.zshrc
-     state: link
+  - name: Check if Xcode Command Line Tools are installed
+    stat:
+      path: /Library/Developer/CommandLineTools
+    register: xcode_clt_check
+
+  - name: Install Xcode Command Line Tools
+    shell: xcode-select --install
+    when: not xcode_clt_check.stat.exists
+
+  # Kitty Terminal Multiplexer
+
+  - name: Check if kitty is installed via Homebrew
+    stat:
+      path: /Applications/kitty.app
+    register: kitty_check
+
+  - name: Install Kitty
+    shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+    args:
+      creates: /Applications/kitty.app
+    when: not kitty_check.stat.exists
+
+  - name: Check if a kitty config exists
+    ansible.builtin.stat:
+      path: /Users/{{ username }}/.config/kitty
+    register: p
+
+  - name: Remove any kitty config that is not a symlink
+    ansible.builtin.file:
+      path: /Users/{{ username }}/.config/kitty
+      state: absent
+    when: p.stat.isdir is defined and p.stat.isdir
+
+  - name: Unlink kitty config if it's a symlink
+    file:
+      path: /Users/{{ username }}/.config/kitty
+      state: absent
+    when: p.stat.exists and p.stat.islnk
+
+  - name: Creating a symlink from repo `kitty` to `~/.config`
+    ansible.builtin.file:
+      src: /Users/{{ username }}/Projects/dotfiles-macos/main/roles/common/files/home/kitty
+      dest: /Users/{{ username }}/.config/kitty
+      state: link

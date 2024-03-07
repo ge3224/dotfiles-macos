@@ -1,9 +1,9 @@
 ---
-
 - hosts: localhost
+  # `root` restricted from installing packages via `brew`
   # become: true
-  # vars_prompt:
-  #     - name: "ssh_passphrase"
-  #       prompt: "Enter the passphrase for the SSH key"
+  vars:
+    brew_zsh_path: "/usr/local/bin/zsh"
+
   roles:
     - common
