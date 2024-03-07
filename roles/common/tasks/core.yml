@@ -70,7 +70,7 @@
 
   - name: Creating a symlink from repo `zshrc` to `~/.zshrc`
     ansible.builtin.file:
-      src: /Users/{{ username }}/Projects/dotfiles-macos/main/roles/common/files/home/zsh/.zshrc
+      src: /Users/{{ username }}/{{ workspace_dir }}/dotfiles-macos/main/roles/common/files/home/zsh/.zshrc
       dest: /Users/{{ username }}/.zshrc
       state: link
 
@@ -115,7 +115,7 @@
 
   - name: Creating a symlink from repo `kitty` to `~/.config`
     ansible.builtin.file:
-      src: /Users/{{ username }}/Projects/dotfiles-macos/main/roles/common/files/home/kitty
+      src: /Users/{{ username }}/{{ workspace_dir }}/dotfiles-macos/main/roles/common/files/home/kitty
       dest: /Users/{{ username }}/.config/kitty
       state: link
 

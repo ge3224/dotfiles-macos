@@ -1,0 +1,48 @@
+---
+
+  - name: Install Neovim
+    homebrew:
+      name: neovim
+      state: present
+
+  - name: Check if nvim_cfg directory exists
+    stat:
+      path: "/Users/{{ username }}/{{ workspace_dir }}/nvim_cfg"
+    register: nvim_cfg_directory
+
+  - name: Create nvim_cfg directory if not present
+    command: mkdir -p "/Users/{{ username }}/{{ workspace_dir }}/nvim_cfg"
+    when: not nvim_cfg_directory.stat.exists
+
+  - name: Clone nvim_cfg repository
+    command: git clone --bare git@github.com:ge3224/nvim_cfg.git /Users/{{ username }}/{{ workspace_dir }}/nvim_cfg/bare.git
+    when: not nvim_cfg_directory.stat.exists
+
+  - name: Create worktree
+    command: |
+      cd /Users/{{ username }}/{{ workspace_dir }}/nvim_cfg/bare.git
+      git worktree add ../main main
+    when: not nvim_cfg_directory.stat.exists
+
+  - name: Check if a nvim config exists
+    ansible.builtin.stat:
+      path: /Users/{{ username }}/.config/nvim
+    register: p
+
+  - name: Remove any nvim config that is not a symlink
+    ansible.builtin.file:
+      path: /Users/{{ username }}/.config/nvim
+      state: absent
+    when: p.stat.isdir is defined and p.stat.isdir
+
+  - name: Unlink nvim config if it's a symlink
+    file:
+      path: /Users/{{ username }}/.config/nvim
+      state: absent
+    when: p.stat.exists and p.stat.islnk
+
+  - name: Creating a symlink from repo `nvim_cfg` to `~/.config/`
+    ansible.builtin.file:
+      src: /Users/{{ username }}/{{ workspace_dir }}/nvim_cfg/main
+      dest: /Users/{{ username }}/.config/nvim
+      state: link
