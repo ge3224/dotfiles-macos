@@ -1,0 +1,24 @@
+---
+
+# Playbook: Check and Install Docker on macOS
+#
+# This playbook checks if Docker is installed on macOS by looking for the Docker application bundle
+# in /Applications directory. If Docker is not installed, it installs Docker using Homebrew.
+#
+# Requirements:
+#   - Ansible installed on the control machine.
+#   - Homebrew installed on the target macOS machine.
+#
+# Note:
+#   - Ensure that the user running Ansible has appropriate permissions to execute commands with sudo.
+#   - Homebrew may require manual intervention if it's not installed or configured properly.
+
+- name: Check if Docker is installed
+  stat:
+    path: /Applications/Docker.app
+  register: docker_check
+  ignore_errors: true
+
+- name: Install Docker via Homebrew if not installed
+  command: brew install --cask docker
+  when: docker_check.stat.exists == false

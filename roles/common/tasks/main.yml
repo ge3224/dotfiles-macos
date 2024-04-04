@@ -4,3 +4,6 @@
  - include_tasks: core.yml
  - include_tasks: nvim.yml
  - include_tasks: os.yml
+ - include_tasks: wm.yml
+ - include_tasks: js.yml
+ - include_tasks: docker.yml
