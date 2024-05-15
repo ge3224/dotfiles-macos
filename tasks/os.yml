@@ -1,35 +1,22 @@
 ---
 
-  # macOS settings
-  - name: Showing hidden files in Finder
+  - name: Show hidden files in Finder
     command: defaults write com.apple.finder AppleShowAllFiles -bool true
-    # notify:
-    #   - Restart Finder
 
   - name: Show Finder path bar
     command: defaults write com.apple.finder ShowPathbar -bool true
-    # notify:
-    #   - Restart Finder
 
   - name: Show Finder status bar
     command: defaults write com.apple.finder ShowStatusBar -bool true
-    # notify:
-    #   - Restart Finder
 
   - name: Enable showing file name extensions in Finder
     command: defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-    # notify:
-    #   - Restart Finder
 
   - name: Enable showing user's home directory in Finder sidebar
     command: defaults write com.apple.finder ShowSidebar -bool true
-    # notify:
-    #   - Restart Finder
-    
+
   - name: Enable Automatically hide and show the Dock
     command: defaults write com.apple.dock autohide -bool true
-    notify:
-      - Restart Dock
 
   - name: Uncheck Scroll direction - Natural
     command: defaults write -g com.apple.swipescrolldirection -bool false
@@ -70,13 +57,9 @@
 
   - name: Set NewWindowTarget preference
     command: defaults write com.apple.finder NewWindowTarget -string "PfLo"
-    # notify:
-    #     - Restart Finder
 
   - name: Set NewWindowTargetPath preference
     command: defaults write com.apple.finder NewWindowTargetPath -string "file:///Users/{{ username }}/{{ workspace_dir }}/"
-    # notify:
-    #   - Restart Finder
 
   - name: Set Finder Search Preference
     command: defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"

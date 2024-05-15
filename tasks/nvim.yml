@@ -1,0 +1,61 @@
+---
+
+- name: Install Neovim if not present
+  homebrew:
+    name: neovim
+    state: present
+
+- name: Define paths for Neovim config files
+  block:
+    - set_fact:
+        nvimconf_repo: "git@github.com:ge3224/nvim_cfg.git"
+        nvimconf_source: "/Users/{{ username }}/{{ workspace_dir }}/nvim_cfg"
+        nvimconf_dest: "/Users/{{ username }}/.config/nvim"
+
+- name: Check if directory for my Neovim config repo clone exists
+  stat:
+    path: "{{ nvimconf_source }}"
+  register: nvimconf
+
+- name: Create a directory for the Neovim config repo clone if needed
+  command: mkdir -p "{{ nvimconf_source }}"
+  when: not nvimconf.stat.exists
+
+- name: Clone Neovim config repo is needed
+  command: git clone --bare {{ nvimconf_repo }} {{ nvimconf_source }}/bare.git
+  when: not nvimconf.stat.exists
+
+- name: Add Git worktree in Neovim config path
+  command: |
+    cd {{ nvimconf_source }}/bare.git
+    git worktree add ../main main
+  when: not nvimconf.stat.exists
+
+- name: Check if a Neovim config exists at destination
+  ansible.builtin.stat:
+    path: "{{ nvimconf_dest }}"
+  register: nconf
+
+- name: Remove Neovim config if it is not a symlink
+  file:
+    path: "{{ nvimconf_dest }}"
+    state: absent
+  when: nconf.stat.exists and not nconf.stat.islnk
+
+- name: Check if Neovim conf symlink is correct target
+  set_fact:
+    is_target_correct: "{{ nconf.stat.lnk_target == (nvimconf_source + '/main') }}"
+  when: nconf.stat.exists and nconf.stat.islnk
+
+- name: Unlink Neovim conf if not correct target
+  file:
+    path: "{{ nvimconf_dest }}"
+    state: absent
+  when: nconf.stat.exists and nconf.stat.islnk and not is_target_correct
+
+- name: Create a symlink to the correct Neovim config if needed
+  file:
+    src: "{{ nvimconf_source }}"
+    dest: "{{ nvimconf_dest }}"
+    state: link
+  when: not nconf.stat.exists or not is_target_correct|default(false)

@@ -1,0 +1,3 @@
+brew_zsh_path: "foo"
+username: "bar"
+workspace_dir: "baz"

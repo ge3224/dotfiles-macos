@@ -1,0 +1,46 @@
+---
+
+- hosts: localhost
+
+  vars_files:
+    - vars.yml
+
+  tasks:
+
+    - name: Configure macOS
+      include_tasks: tasks/os.yml
+
+    - name: Update Homebrew
+      include_tasks: tasks/homebrew.yml
+
+    - name: Ensure Xcode Command-line Tools has been installed
+      include_tasks: tasks/xcode_cli.yml
+
+    - name: Ensure `kitty` terminal emulator is installed
+      include_tasks: tasks/kitty.yml
+
+    - name: Ensure `ripgrep` is installed
+      include_tasks: tasks/ripgrep.yml
+
+    - name: Set up Homebrew-based Z-shell
+      include_tasks: tasks/zsh_brew.yml
+
+    - name: Ensure Neovim is installed
+      include_tasks: tasks/nvim.yml
+
+    - name: Ensure the Amethyst window manager is installed
+      include_tasks: tasks/amethyst.yml
+
+    - name: Ensure Node.js and `pnpm` are installed
+      include_tasks: tasks/js.yml
+
+    - name: Ensure Docker is installed
+      include_tasks: tasks/docker.yml
+
+  handlers:
+
+    - name: Restart Finder
+      command: killall Finder
+
+    - name: Restart Dock
+      command: killall Dock

@@ -1,0 +1,122 @@
+---
+
+# Use Homebrew for more current Z-shell release
+
+- name: Check if zsh is installed via Homebrew
+  shell: brew list --formula | grep -q '^zsh$'
+  register: homebrew_zsh
+  changed_when: false
+  failed_when: false
+
+- debug:
+    msg: |
+      Homebrew installed zsh: 
+        - stdout: "{{ homebrew_zsh }}"
+        - stderr: "{{ homebrew_zsh.stderr }}"
+
+- name: Install zsh via homebrew if not present
+  community.general.homebrew:
+    name: zsh
+    state: present
+  when: not homebrew_zsh.stdout
+
+- name: Check if brew_zsh_path exists in /etc/shells
+  shell: grep -q {{ brew_zsh_path }} /etc/shells
+  register: zsh_check
+  changed_when: false
+  failed_when: false
+
+- name: Append brew_zsh_path to /etc/shells
+  become: yes
+  lineinfile:
+    path: /etc/shells
+    line: "{{ brew_zsh_path }}"
+    create: yes
+  when: not zsh_check.rc == 0
+
+- name: Check default shell
+  become: yes
+  shell: dscl . -read /Users/{{ username }} UserShell
+  register: default_shell
+  ignore_errors: true
+
+- name: Change default shell to new version
+  become: yes
+  shell: chsh -s {{ brew_zsh_path }} # Requires user password
+  when: brew_zsh_path is not defined or brew_zsh_path not in default_shell.stdout
+
+# Z-shell configuration
+
+- name: Define paths for Z-shell config files
+  block:
+    - set_fact:
+        zsh_source: "/Users/{{ username }}/Projects/dotfiles-macos/main/files/home/zsh/.zshrc"
+        zsh_destination: "/Users/{{ username }}/.zshrc"
+
+- name: Check for existence of Z-shell config
+  stat:
+    path: "{{ zsh_destination }}"
+  register: zshrc_file
+
+# - name: Display results of Z-shell existence check
+#   debug:
+#     msg: 
+#       - ".zshrc is {{ 'present' if zshrc_file.stat.exists else 'absent' }}"
+
+# - name: Display result of Z-shell symlink check
+#   debug:
+#     msg: 
+#     - ".zshsh is {{ 'is' if zshrc_file.stat.islnk else 'is not' }} a symlink"
+#   when: zshrc_file.stat.exists
+
+- name: Delete Z-shell config if it is not a symlink
+  file:
+    path: "{{ zsh_destination }}"
+    state: absent
+  register: file_removed
+  when: zshrc_file.stat.exists and not zshrc_file.stat.islnk
+
+# - name: Display result if .zshrc was not a symlink and was removed
+#   debug:
+#     msg: ".zshrc file was not a symlink and has been removed"
+#   when: file_removed.changed
+
+- name: Check symlink target of Z-shell config
+  stat:
+    path: "{{ zsh_destination }}"
+  register: symlink_target
+  when: zshrc_file.stat.exists and zshrc_file.stat.islnk
+
+# - name: Display symlink target of Z-shell config
+#   debug:
+#     msg: "Symlink target for .zshrc is {{ symlink_target.stat.lnk_target }}"
+#   when: zshrc_file.stat.exists and zshrc_file.stat.islnk
+
+- name: Check if symlink target is correct
+  set_fact:
+    is_target_correct: "{{ symlink_target.stat.lnk_target == zsh_source }}"
+  when: zshrc_file.stat.exists and zshrc_file.stat.islnk
+
+# - name: Display result if symlink target is the specified path
+#   debug:
+#     msg: "Symlink target is {{ 'correct' if is_target_correct else 'incorrect' }}"
+#   when: zshrc_file.stat.exists and zshrc_file.stat.islnk and is_target_correct is defined
+
+- name: Unlink Z-shell symlink if incorrect
+  file:
+    path: "{{ zsh_destination }}"
+    state: absent
+  register: zshrc_unlinked
+  when: zshrc_file.stat.exists and zshrc_file.stat.islnk and not is_target_correct
+
+# - name: Display result if .zshrc was unlinked
+#   debug:
+#     msg: ".zshrc symlink has been unlinked."
+#   when: zshrc_unlinked.changed
+
+- name: Create a symlink to the correct target if needed
+  ansible.builtin.file:
+    src: "{{ zsh_source }}"
+    dest: "{{ zsh_destination }}"
+    state: link
+  when: not zshrc_file.stat.exists or zshrc_unlinked.changed or file_removed.changed

@@ -1,0 +1,13 @@
+---
+
+- name: Check if ripgrep is installed via Homebrew
+  command: brew list --formula | grep -q '^ripgrep$'
+  register: ripgrep
+  changed_when: false
+  failed_when: false
+
+- name: Install ripgrep via Homebrew
+  homebrew:
+    name: ripgrep
+    state: present
+  when: ripgrep.rc != 0
