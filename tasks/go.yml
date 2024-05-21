@@ -1,0 +1,6 @@
+---
+
+- name: Install Go if not present
+  homebrew:
+    name: go
+    state: latest

@@ -34,6 +34,9 @@
     - name: Ensure Node.js and `pnpm` are installed
       include_tasks: tasks/js.yml
 
+    - name: Ensure Go is installed
+      include_tasks: tasks/go.yml
+
     - name: Ensure Docker is installed
       include_tasks: tasks/docker.yml
 
