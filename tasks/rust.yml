@@ -1,0 +1,13 @@
+---
+
+- name: Check if Rust has been installed
+  command: rustc --version
+  register: rust_check
+  ignore_errors: true
+
+- name: Install Rust if not present
+  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  args:
+    executable: /bin/bash
+  become_user: "{{ username }}"
+  when: rust_check.failed

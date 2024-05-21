@@ -37,6 +37,9 @@
     - name: Ensure Go is installed
       include_tasks: tasks/go.yml
 
+    - name: Ensure Go is installed
+      include_tasks: tasks/rust.yml
+
     - name: Ensure Docker is installed
       include_tasks: tasks/docker.yml
 
