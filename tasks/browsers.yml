@@ -1,0 +1,81 @@
+---
+
+- name: Check if Brave Browser is installed
+  command: "brew list --cask | grep -q brave-browser"
+  register: brave_installed
+  changed_when: false
+  ignore_errors: true
+
+- name: Install Brave Browser if not installed
+  shell: brew install --cask brave-browser
+  when: brave_installed.failed
+
+- name: Check if Firefox is installed
+  command: "brew list --cask | grep -q firefox"
+  register: firefox_installed
+  changed_when: false
+  ignore_errors: true
+
+- name: Install Firefox if not installed
+  shell: brew install --cask firefox
+  when: firefox_installed.failed
+
+- name: Check if Firefox Developer Edition is installed
+  command: "brew list --cask | grep -q firefox@developer-edition"
+  register: firefox_dev_installed
+  changed_when: false
+  ignore_errors: true
+
+- name: Install Firefox Developer Edition if not installed
+  shell: brew install --cask firefox@developer-edition
+  when: firefox_dev_installed.failed
+
+- name: Check if Google Chrome is installed
+  command: "brew list --cask | grep -q google-chrome"
+  register: chrome_installed
+  changed_when: false
+  ignore_errors: true
+
+- name: Install Google Chrome if not installed
+  shell: brew install --cask google-chrome
+  when: chrome_installed.failed
+
+- name: Check if Google Chrome Canary is installed
+  command: "brew list --cask | grep -q google-chrome@canary"
+  register: canary_installed
+  changed_when: false
+  ignore_errors: true
+
+- name: Install Google Chrome Canary if not installed
+  shell: brew install --cask google-chrome@canary
+  when: canary_installed.failed
+
+- name: Check if Microsoft Edge is installed
+  command: "brew list --cask | grep -q microsoft-edge"
+  register: edge_installed
+  changed_when: false
+  ignore_errors: true
+
+- name: Install Microsoft Edge if not installed
+  shell: brew install --cask microsoft-edge
+  when: edge_installed.failed
+
+- name: Check if Safari Technology Preview is installed
+  command: "brew list --cask | grep -q safari-technology-preview"
+  register: safari_tech_installed
+  changed_when: false
+  ignore_errors: true
+
+- name: Install Safari Technology Preview if not installed
+  shell: brew install --cask safari-technology-preview
+  when: safari_tech_installed.failed
+
+- name: Check if Tor Browser is installed
+  command: "brew list --cask | grep -q tor-browser"
+  register: tor_installed
+  changed_when: false
+  ignore_errors: true
+
+- name: Install Tor Browser if not installed
+  shell: brew install --cask tor-browser
+  when: tor_installed.failed

@@ -1,0 +1,10 @@
+---
+
+- name: Tap dart-lang/dart repository
+  homebrew_tap:
+    name: dart-lang/dart
+
+- name: Install Dart
+  homebrew:
+    name: dart
+    state: present

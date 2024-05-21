@@ -31,6 +31,9 @@
     - name: Ensure the Amethyst window manager is installed
       include_tasks: tasks/amethyst.yml
 
+    - name: Ensure python related tools are installed
+      include_tasks: tasks/python.yml
+
     - name: Ensure Node.js and `pnpm` are installed
       include_tasks: tasks/js.yml
 
@@ -42,6 +45,12 @@
 
     - name: Ensure Docker is installed
       include_tasks: tasks/docker.yml
+
+    - name: Ensure Dart is installed
+      include_tasks: tasks/dart.yml
+
+    - name: Ensure Test Browsers are installed
+      include_tasks: tasks/browsers.yml
 
   handlers:
 

@@ -1,0 +1,32 @@
+---
+
+- name: Install pipx using homebrew
+  homebrew:
+    name: pipx
+    state: present
+
+- name: Ensure pipx path is configured for the current user
+  shell: pipx ensurepath
+  environment:
+    PATH: "{{ ansible_env.PATH }}:/usr/local/bin"
+  args:
+    executable: /bin/bash
+
+- name: Optionally configure pipx to allow global actions
+  shell: sudo pipx ensurepath --global
+  args:
+    executable: /bin/bash
+  ignore_errors: true  # Optional: in case sudo pipx ensurepath --global is not needed or fails
+
+- name: Refresh the user's shell profile to include pipx paths
+  shell: |
+    source ~/.bash_profile || source ~/.bashrc || source ~/.zshrc
+  args:
+    executable: /bin/bash
+  ignore_errors: true  # Optional: if the shell profile source fails
+
+- name: Install poetry using pipx
+  shell: pipx install poetry
+  args:
+    executable: /bin/bash
+
