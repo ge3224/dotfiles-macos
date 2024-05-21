@@ -1,11 +1,18 @@
 ---
 
-  - name: Install Node.js
-    homebrew:
-      name: node
-      state: latest
+- name: Install Node.js
+  homebrew:
+    name: node
+    state: latest
 
-  - name: Install pnpm
-    homebrew:
-      name: pnpm
-      state: latest
+- name: Check if pnpm has been installed
+  command: pnpm --version
+  register: pnpm_check
+  ignore_errors: true
+
+- name: Download and install pnpm if not present
+  shell: curl -fsSL https://get.pnpm.io/install.sh | sh -
+  args:
+    executable: /bin/bash
+  become_user: "{{ username }}"
+  when: pnpm_check.failed
