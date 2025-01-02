@@ -101,3 +101,17 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+export SOURCE_WORKSPACE="alluviaadmin@192.168.99.128:/Users/jacobbenison/Projects/"
+export DESTINATION_WORKSPACE="/Users/jacobbenison/_legacy_backup"
+
+# Source .env_vars if it exists
+if [ -f ~/.env_vars ]; then
+    source ~/.env_vars
+else
+    echo "Warning: ~/.env_vars file not found. Create this file to set environment variables."
+fi
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"

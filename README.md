@@ -153,8 +153,10 @@ This repository contains checklists and configuration files for setting up a web
 - [X] [pnpm](https://pnpm.io/installation) - JavaScript package manager
 - [X] [pipx](https://github.com/pypa/pipx) - Virtual Environment for Python
 - [X] [poetry](https://python-poetry.org/docs/) - python package manager
-- [ ] [Composer](https://getcomposer.org/download/) - PHP package manager
-    - [ ] Install in local project (virtually)
+- [ ] [PHP](https://www.php.net/)
+    - You install different version via HomeBrew, and you can use HomeBrew to switch between: `brew --unlink php@8.0 \ brew link --force --overwrite php@7.0`
+    - [ ] [Composer](https://getcomposer.org/download/) - PHP package manager
+        - [ ] Install in local project (virtually)
 - [X] [Dart](https://dart.dev/get-dart) - programming language
 
 #### Browsers
